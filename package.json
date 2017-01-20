@@ -4,8 +4,12 @@
   "description": "a demo of wx program",
   "main": "app.js",
   "scripts": {
-    "start": "json-server --watch server/data.json"
+    "start": "node server/index.js"
   },
   "author": "me@xingbofeng.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0"
+  }
 }
