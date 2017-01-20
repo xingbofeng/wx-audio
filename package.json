@@ -1,0 +1,11 @@
+{
+  "name": "wx-todolist",
+  "version": "1.0.0",
+  "description": "a demo of wx program",
+  "main": "app.js",
+  "scripts": {
+    "start": "json-server --watch server/data.json"
+  },
+  "author": "me@xingbofeng.com",
+  "license": "ISC"
+}
