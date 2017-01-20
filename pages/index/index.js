@@ -9,7 +9,8 @@ Page({
     this.audioCtx.play()
   },
   data: {
-    src: 'http://m2.music.126.net/VNlfsboc6OfHRwc3HDWCww==/3265549547548433.mp3'
+    src: '',
+    pic: '',
   },
   //事件处理函数
   bindViewTap: function() {
@@ -32,8 +33,16 @@ Page({
       header: {
           'content-type': 'application/json'
       },
-      success: function(res) {
-        console.log(res.data.result.songs[0].audio);
+      success: (res) => {
+        // console.log(res.data.result.songs[0].audio);
+        // const newsrc = res.data.result.songs[0].audio;
+        // this.data.src = res.data.result.songs[0].audio;
+        // console.log(this.data.src);
+        console.log(res.data.result.songs[0].album.picUrl);
+        this.setData({
+          pic: res.data.result.songs[0].album.picUrl,
+          src: res.data.result.songs[0].audio,
+        });
       }
     })
   }

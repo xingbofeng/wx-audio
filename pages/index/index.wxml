@@ -2,4 +2,5 @@
 <view class="container">
   <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop>
   </audio>
+  <image src="{{pic}}"></image>
 </view>
