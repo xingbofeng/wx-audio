@@ -9,8 +9,6 @@ Page({
     this.audioCtx.play()
   },
   data: {
-    motto: 'Hello World',
-    userInfo: {},
     src: 'http://m2.music.126.net/VNlfsboc6OfHRwc3HDWCww==/3265549547548433.mp3'
   },
   //事件处理函数
