@@ -1,6 +1,38 @@
 <!--index.wxml-->
 <view class="container">
-  <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop>
+  <view class="section" id="musicInfos">
+    <text id="audioApp">wx-audio</text>
+    <text id="infos">歌曲来源网易云音乐，仅作试验使用，不可用做商业用途！</text>
+  </view>
+  <view class="section" id="giveMusicName">
+    <input
+      class="musicname"
+      value="{{input}}"
+      placeholder="请输入歌曲名称"
+      bindinput="bindMusicNameInput"
+    />
+    <button
+      type="primary"
+      bindtap="bindSearch"
+      style="margin:0;"
+    >搜索</button>
+  </view>
+  <image
+    src="{{picUrl}}"
+    id="picUrl"
+    style="{{transform}}"
+    bindtap="toggleRotate"
+  ></image>
+  <audio
+    poster="{{picUrl}}"
+    name="{{name}}"
+    author="{{singer}}"
+    src="{{musicUrl}}"
+    id="myAudio"
+    controls="true"
+    loop="false"
+    bindplay="playMusic"
+    bindpause="pauseMusic"
+  >
   </audio>
-  <image src="{{pic}}"></image>
 </view>

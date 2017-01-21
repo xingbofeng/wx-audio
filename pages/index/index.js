@@ -1,49 +1,103 @@
-//index.js
-//获取应用实例
-var app = getApp()
+var app = getApp();
+let rotate = 0;
 Page({
-  onReady: function (e) {
+  onReady: function() {
+    // 使用 wx.createAudioContext 获取 audio 上下文 context
+    this.audioCtx = wx.createAudioContext('myAudio');
   },
   data: {
-    src: '',
-    pic: '',
+    name: '', // 歌曲名称
+    musicUrl: '', // 歌曲链接地址
+    picUrl: '', // 专辑图片地址
+    page: '', // 网易云音乐的歌曲链接
+    singer: '', //歌手名称
+    input: '', // 输入框的内容
+    transform: '', // 旋转动画属性
+    rotateFlag: false, // 控制专辑图片旋转
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  // 专辑图片旋转函数
+  myRotate: function() {
+    rotate++;
+    let transform = `transform:rotate(${rotate}deg);`;
+    this.setData({
+      transform,
+    });
+    const animation = setTimeout(() => {
+      this.myRotate();
+    }, 30);
+    if (!this.data.rotateFlag) {
+      clearTimeout(animation);
+    };
   },
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
-    })
+  // 控制专辑图片旋转
+  toggleRotate: function() {
+    if (this.data.rotateFlag) {
+      this.pauseMusic();
+      this.audioCtx.pause();
+    } else {
+      this.playMusic();
+      this.audioCtx.play();
+    }
+  },
+  // 播放音乐
+  playMusic: function() {
+    this.setData({
+      rotateFlag: true,
+    });
+    this.myRotate();
+  },
+  // 暂停播放音乐
+  pauseMusic: function() {
+    this.setData({
+      rotateFlag: false,
+    });
+  },
+  // bindMusicNameInput监听用户输入
+  bindMusicNameInput: function(e) {
+    this.setData({
+      input: e.detail.value,
+    });
+  },
+  // bindSearch搜索按钮触发
+  bindSearch: function(e) {
+    this.getMusicInfos(this.data.input);
+  },
+  // getMusicInfos发送http请求
+  getMusicInfos: function(musicname) {
     wx.request({
       method: 'POST',
-      url: 'http://127.0.0.1:3000', //仅为示例，并非真实的接口地址
+      url: 'http://127.0.0.1:3000', //访问node端后台借口
       header: {
-          'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        url: 'http://s.music.163.com/search/get/?type=1&limit=1&s=%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83',
+        musicname: musicname,
       },
       success: (res) => {
-        // console.log(res.data.result.songs[0].audio);
-        // const newsrc = res.data.result.songs[0].audio;
-        // this.data.src = res.data.result.songs[0].audio;
-        // console.log(this.data.src);
-        console.log(res.data.result.songs[0].album.picUrl);
+        const {
+          name,
+          picUrl,
+          musicUrl,
+          page,
+          singer,
+        } = res.data;
         this.setData({
-          pic: res.data.result.songs[0].album.picUrl,
-          src: res.data.result.songs[0].audio,
+          name,
+          picUrl,
+          musicUrl,
+          page,
+          singer,
         });
+        console.log(this.data);
+      },
+      error: () => {
+        console.log('err');
       }
-    })
+    });
+  },
+  // onLoad为生命周期函数
+  onLoad: function() {
+    // 默认播放歌曲
+    this.getMusicInfos('告白气球');
   }
 })

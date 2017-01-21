@@ -4,7 +4,7 @@
   "description": "a demo of wx program",
   "main": "app.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/server.js"
   },
   "author": "me@xingbofeng.com",
   "license": "ISC",

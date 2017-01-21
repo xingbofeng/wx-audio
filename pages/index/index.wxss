@@ -1,0 +1,36 @@
+#giveMusicName {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+#picUrl {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  margin: 20px 0;
+}
+.musicname {
+  border: 2px #ddd solid;
+  border-radius: 4px;
+  height: 100%;
+  padding: 8px;
+  font-family: "Microsoft Yahei";
+}
+#musicInfos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100px;
+}
+#infos {
+  font-size: 14px;
+  color: #555;
+}
+#audioApp {
+  font-size: 20px;
+  color: #362e2b;
+}
