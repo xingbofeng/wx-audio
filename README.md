@@ -42,11 +42,11 @@ type: 搜索类型；取值意义
 1002 用户
 ```
 ### 返回结果
-如访问
+如对下列url发起get请求：
 ```
 http://s.music.163.com/search/get/?type=1&limit=1&s=111
 ```
-返回结果
+返回结果如图所示：
 ```json
 {
   "result": {
@@ -82,5 +82,7 @@ http://s.music.163.com/search/get/?type=1&limit=1&s=111
 }
 ```
 ![image](API.jpg)
+## 更新日志
+* 0.0.1 完成基本功能界面;发起请求返回特定的一首歌曲;
 ## LICENSE
 [MIT LICENSE](./LICENSE)

@@ -1,7 +1,7 @@
 {
-  "name": "wx-todolist",
-  "version": "1.0.0",
-  "description": "a demo of wx program",
+  "name": "wx-audio",
+  "version": "0.0.1",
+  "description": "a demo of wx smart program.",
   "main": "app.js",
   "scripts": {
     "start": "node server/server.js"
