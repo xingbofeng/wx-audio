@@ -84,5 +84,6 @@ http://s.music.163.com/search/get/?type=1&limit=1&s=111
 ![image](API.jpg)
 ## 更新日志
 * 0.0.1 完成基本功能界面;发起请求返回特定的一首歌曲;
+
 ## LICENSE
 [MIT LICENSE](./LICENSE)
