@@ -4,6 +4,10 @@
 ## 运行效果
 ![picture](picture.gif)
 
+## 依赖版本
+`node v7.1.0`
+
+注：由于本项目使用了部分es6的语法，因此需要较高版本的node环境，建议升级node版本运行。
 ## 使用方法
 * 下载微信开发者工具
 [下载 - 小程序](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)
