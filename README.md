@@ -20,18 +20,25 @@ git clone https://github.com/xingbofeng/wx-audio.git
 npm install
 npm start
 ```
+* 运行单元测试
+```
+npm install -g mocha
+npm test
+```
 * 微信开发者工具加载项目
 * 运行小程序
 
 ## 待做事件清单
 - [x] node端转发请求
+- [x] 添加测试用例
 - [ ] 歌曲列表
 - [ ] 控制歌曲播放速度
 
 ## 网易云音乐API介绍
-可见代码[POSThttp.js](./server/POSThttp.js)
+
 ### URL
 **GET http://music.163.com/api/search/get/**
+
 ### 参数
 ```
 s: 搜索词
@@ -48,46 +55,124 @@ type: 搜索类型；取值意义
 ### 返回结果
 如对下列url发起get请求：
 ```
-http://s.music.163.com/search/get/?type=1&limit=1&s=111
+http://s.music.163.com/search/get/?type=1&limit=5&s=%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83
 ```
 返回结果如图所示：
 ```json
 {
   "result": {
-    "songCount": 8301,
+    "songCount": 2275,
     "songs": [
       {
-        "id": 441064427,
-        "name": "111",
+        "id": 440241144,
+        "name": "告白气球",
         "artists": [
           {
-            "id": 0,
-            "name": "大顔",
+            "id": 1081635,
+            "name": "周二珂",
             "picUrl": null
           }
         ],
         "album": {
-          "id": 0,
-          "name": "[DJ节目]大顔的DJ节目 第111期",
+          "id": 34986028,
+          "name": "告白气球",
           "artist": {
             "id": 0,
-            "name": "大顔",
+            "name": "",
             "picUrl": null
           },
-          "picUrl": "http://p1.music.126.net/hPkyYmPSQUvVjcZFMrEmfQ==/18766464463932738.jpg"
+          "picUrl": "http://p1.music.126.net/m3_elKryq_x62UNHJ2NgHg==/109951162807555886.jpg"
         },
-        "audio": "http://m2.music.126.net/h0wVQtDAuVWnP11ks42lug==/18725782533955295.mp3",
-        "djProgramId": 796665591,
-        "page": "http://music.163.com/m/song/441064427"
+        "audio": "http://m2.music.126.net/GvIMZ5ZW0l04xFMVYtTy8g==/18502581673300022.mp3",
+        "djProgramId": 0,
+        "page": "http://music.163.com/m/song/440241144"
+      },
+      {
+        "id": 434070713,
+        "name": "告白气球 ",
+        "artists": [
+          {
+            "id": 1073042,
+            "name": "王进",
+            "picUrl": null
+          }
+        ],
+        "album": {
+          "id": 34801227,
+          "name": "告白气球",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null
+          },
+          "picUrl": "http://p1.music.126.net/cIim8rAhdKV1Up7e9zSFoA==/17647161626137638.jpg"
+        },
+        "audio": "http://m2.music.126.net/zp5J-qWfkwmBd2pq3pHzCw==/18605935765863165.mp3",
+        "djProgramId": 0,
+        "page": "http://music.163.com/m/song/434070713"
+      },
+      {
+        "id": 421137034,
+        "name": "告白气球",
+        "artists": [
+          {
+            "id": 1158065,
+            "name": "宇西",
+            "picUrl": null
+          }
+        ],
+        "album": {
+          "id": 34778501,
+          "name": "告白气球（Cover 周杰伦）",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null
+          },
+          "picUrl": "http://p1.music.126.net/tlp3VWVQVe0Je1r-oHn91g==/17666952835430891.jpg"
+        },
+        "audio": "http://m2.music.126.net/8egvCxWVy4vzk2EJG_dGqg==/3265549609864401.mp3",
+        "djProgramId": 0,
+        "page": "http://music.163.com/m/song/421137034"
+      },
+      {
+        "id": 429461789,
+        "name": "告白气球",
+        "artists": [
+          {
+            "id": 975714,
+            "name": "叶洛洛",
+            "picUrl": null
+          },
+          {
+            "id": 12126098,
+            "name": "Vk",
+            "picUrl": null
+          }
+        ],
+        "album": {
+          "id": 34872359,
+          "name": "告白气球",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null
+          },
+          "picUrl": "http://p1.music.126.net/PuNMFpLHzvHw2v0-Zh2b8g==/18244196440128259.jpg"
+        },
+        "audio": "http://m2.music.126.net/t_qlmZ581WF2MwHmvUavxA==/2946691220790691.mp3",
+        "djProgramId": 0,
+        "page": "http://music.163.com/m/song/429461789"
       }
     ]
   },
   "code": 200
 }
 ```
-![image](API.jpg)
+![image](http://oczira72b.bkt.clouddn.com/APIhahaha.png)
 ## 更新日志
 * 0.0.1 完成基本功能界面;发起请求返回特定的一首歌曲;
+* 0.0.2 更改服务端，现在返回最多十首歌曲，但前端还未优化;添加服务端测试代码;
 
 ## LICENSE
 [MIT LICENSE](./LICENSE)

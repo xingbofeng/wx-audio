@@ -3,7 +3,7 @@ const URL = function(musicname) {
   let url = 'http://s.music.163.com/search/get/';
   const data = {
     'type': '1',
-    'limit': '1',
+    'limit': '10',
     's': musicname,
   };
   for (let key in data) {

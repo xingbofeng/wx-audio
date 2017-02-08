@@ -8,26 +8,30 @@ const POSThttp = function(request) {
       res.on('data', (data) => {
         body += data;
       }).on('end', () => {
-        // 格式化
-        const {
-          name,
-          audio: musicUrl,
-          page,
-          album: {
-            name: musicName,
+        let reply = [];
+        for (let i = 0; i < JSON.parse(body).result.songs.length; i++) {
+          // 格式化
+          let {
+            name,
+            audio: musicUrl,
+            page,
+            album: {
+              name: albumName,
+              picUrl,
+            },
+            artists: [{
+              name: singer,
+            }],
+          } = JSON.parse(body).result.songs[i];
+          reply.push({
+            name,
             picUrl,
-          },
-          artists: [{
-            name: singer,
-          }],
-        } = JSON.parse(body).result.songs[0];
-        const reply = {
-          name,
-          picUrl,
-          musicUrl,
-          page,
-          singer,
-        };
+            musicUrl,
+            page,
+            singer,
+            albumName,
+          });
+        }
         resolve(reply);
       });
     });

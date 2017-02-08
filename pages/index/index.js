@@ -66,7 +66,7 @@ Page({
   getMusicInfos: function(musicname) {
     wx.request({
       method: 'POST',
-      url: 'http://127.0.0.1:3000', //访问node端后台借口
+      url: 'http://127.0.0.1:3000', //访问node端后台接口
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -80,7 +80,7 @@ Page({
           musicUrl,
           page,
           singer,
-        } = res.data;
+        } = res.data[0];
         this.setData({
           name,
           picUrl,
@@ -88,7 +88,6 @@ Page({
           page,
           singer,
         });
-        console.log(this.data);
       },
       error: () => {
         console.log('err');
