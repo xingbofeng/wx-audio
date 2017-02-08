@@ -1,4 +1,5 @@
 # wx-audio
+[![Build Status](https://travis-ci.org/xingbofeng/wx-audio.svg?branch=master)](https://travis-ci.org/xingbofeng/wx-audio)
 微信小程序音乐播放器应用。
 
 ## 运行效果
