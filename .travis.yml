@@ -9,17 +9,6 @@ addons:
 language: node_js
 node_js:
   - "6"
-env:
-    - EMBER_VERSION=default
-    - EMBER_VERSION=release
-    - EMBER_VERSION=beta
-    - EMBER_VERSION=canary
-matrix:
-  fast_finish: true
-  allow_failures:
-    - env: EMBER_VERSION=release
-    - env: EMBER_VERSION=beta
-    - env: EMBER_VERSION=canary
 
 before_install:
     # setting the path for phantom.js 2.0.0
