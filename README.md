@@ -1,4 +1,5 @@
 # wx-audio
+
 [![Build Status](https://travis-ci.org/xingbofeng/wx-audio.svg?branch=master)](https://travis-ci.org/xingbofeng/wx-audio)
 微信小程序音乐播放器应用。
 
@@ -17,11 +18,14 @@
 git clone https://github.com/xingbofeng/wx-audio.git
 ```
 * 启动服务端
+注：本项目服务端代码我已部署到我自己的`测试服务器`(接口为`http://angryzhangzhe.cn`)上，若想本地调试接口，请修改`pages/index/index.js`中的`wx.request函数`的接口为`http://127.0.0.1:3000`，在启动本地服务端。
+本地服务端代码入口文件为：`server/server.js`，您可以通过以下命令启动本地服务端：
 ```
 npm install
 npm start
 ```
 * 运行单元测试
+目前已写三个测试用例，测试用例代码在`test/`目录下，测试框架为`mocha`：
 ```
 npm install -g mocha
 npm test
@@ -31,7 +35,7 @@ npm test
 
 ## 待做事件清单
 - [x] node端转发请求
-- [x] 添加测试用例
+- [x] 添加server端测试用例
 - [ ] 歌曲列表
 - [ ] 控制歌曲播放速度
 

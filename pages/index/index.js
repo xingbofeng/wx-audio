@@ -66,7 +66,7 @@ Page({
   getMusicInfos: function(musicname) {
     wx.request({
       method: 'POST',
-      url: 'http://127.0.0.1:3000', //访问node端后台接口
+      url: 'http://angryzhangzhe.cn:3000', //访问node端后台接口
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
