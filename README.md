@@ -18,7 +18,7 @@
 git clone https://github.com/xingbofeng/wx-audio.git
 ```
 * 启动服务端
-注：本项目服务端代码我已部署到我自己的`测试服务器`(接口为`http://angryzhangzhe.cn`)上，若想本地调试接口，请修改`pages/index/index.js`中的`wx.request函数`的接口为`http://127.0.0.1:3000`，在启动本地服务端。
+注：本项目服务端代码我已部署到我自己的`测试服务器`(接口为`http://angryzhangzhe.cn:3000`)上，若想本地调试接口，请修改`pages/index/index.js`中的`wx.request函数`的接口为`http://127.0.0.1:3000`，在启动本地服务端。
 本地服务端代码入口文件为：`server/server.js`，您可以通过以下命令启动本地服务端：
 ```
 npm install
@@ -36,7 +36,8 @@ npm test
 ## 待做事件清单
 - [x] node端转发请求
 - [x] 添加server端测试用例
-- [ ] 歌曲列表
+- [x] 歌曲列表
+- [ ] 添加搜索用户/歌手/歌单功能
 - [ ] 控制歌曲播放速度
 
 ## 网易云音乐API介绍
@@ -178,6 +179,7 @@ http://s.music.163.com/search/get/?type=1&limit=5&s=%E5%91%8A%E7%99%BD%E6%B0%94%
 ## 更新日志
 * 0.0.1 完成基本功能界面;发起请求返回特定的一首歌曲;
 * 0.0.2 更改服务端，现在返回最多十首歌曲，但前端还未优化;添加服务端测试代码;
+* 0.1.0 完成搜索列表功能;发起请求返回多首歌曲;
 
 ## LICENSE
 [MIT LICENSE](./LICENSE)

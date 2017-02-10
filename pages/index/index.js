@@ -14,6 +14,8 @@ Page({
     input: '', // 输入框的内容
     transform: '', // 旋转动画属性
     rotateFlag: false, // 控制专辑图片旋转
+    showContainer: true, // 展示音乐播放器或音乐播放列表
+    list: [], // 搜索音乐播放列表
   },
   // 专辑图片旋转函数
   myRotate: function() {
@@ -74,19 +76,9 @@ Page({
         musicname: musicname,
       },
       success: (res) => {
-        const {
-          name,
-          picUrl,
-          musicUrl,
-          page,
-          singer,
-        } = res.data[0];
         this.setData({
-          name,
-          picUrl,
-          musicUrl,
-          page,
-          singer,
+          list: res.data,
+          showContainer: false,
         });
       },
       error: () => {
@@ -94,9 +86,17 @@ Page({
       }
     });
   },
+  // 列表音乐函数
+  changeMusic: function (e) {
+    var infos = this.data.list[e.target.dataset.musicindex];
+    this.setData(infos);
+    this.setData({
+      showContainer: true,
+      input: '',
+    });
+  },
   // onLoad为生命周期函数
   onLoad: function() {
     // 默认播放歌曲
-    this.getMusicInfos('告白气球');
   }
 })

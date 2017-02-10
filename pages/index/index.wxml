@@ -4,35 +4,60 @@
     <text id="audioApp">wx-audio</text>
     <text id="infos">歌曲来源网易云音乐，仅作试验使用，不可用做商业用途！</text>
   </view>
-  <view class="section" id="giveMusicName">
-    <input
-      class="musicname"
-      value="{{input}}"
-      placeholder="请输入歌曲名称"
-      bindinput="bindMusicNameInput"
-    />
-    <button
-      type="primary"
-      bindtap="bindSearch"
-      style="margin:0;"
-    >搜索</button>
+  <view wx:if="{{showContainer}}" class="musicContainer">
+    <view class="section" id="giveMusicName">
+      <input
+        class="musicname"
+        value="{{input}}"
+        placeholder="请输入歌曲名称"
+        bindinput="bindMusicNameInput"
+      />
+      <button
+        type="primary"
+        bindtap="bindSearch"
+        style="margin:0;"
+      >搜索</button>
+    </view>
+    <image
+      src="{{picUrl}}"
+      id="picUrl"
+      style="{{transform}}"
+      bindtap="toggleRotate"
+    ></image>
+    <audio
+      poster="{{picUrl}}"
+      name="{{name}}"
+      author="{{singer}}"
+      src="{{musicUrl}}"
+      id="myAudio"
+      controls="true"
+      loop="false"
+      bindplay="playMusic"
+      bindpause="pauseMusic"
+    >
+    </audio>
   </view>
-  <image
-    src="{{picUrl}}"
-    id="picUrl"
-    style="{{transform}}"
-    bindtap="toggleRotate"
-  ></image>
-  <audio
-    poster="{{picUrl}}"
-    name="{{name}}"
-    author="{{singer}}"
-    src="{{musicUrl}}"
-    id="myAudio"
-    controls="true"
-    loop="false"
-    bindplay="playMusic"
-    bindpause="pauseMusic"
+</view>
+<view class="list" wx:if="{{!showContainer}}">
+  <view
+    wx:for="{{list}}"
+    class="item"
+    bindtap="changeMusic"
+    wx:key="{{index}}"
+    data-musicIndex="{{index}}"
   >
-  </audio>
+    <image
+      src="{{item.picUrl}}"
+      alt=""
+      data-musicIndex="{{index}}"
+    ></image>
+    <text
+      class="name"
+      data-musicIndex="{{index}}"
+    >{{item.name}}</text>
+    <text
+      class="album"
+      data-musicIndex="{{index}}"
+    >{{item.singer}}-{{item.albumName}}</text>
+  </view>
 </view>
