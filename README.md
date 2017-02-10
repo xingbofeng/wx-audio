@@ -1,6 +1,7 @@
 # wx-audio
 
 [![Build Status](https://travis-ci.org/xingbofeng/wx-audio.svg?branch=master)](https://travis-ci.org/xingbofeng/wx-audio)
+
 微信小程序音乐播放器应用。
 
 ## 运行效果
@@ -10,6 +11,12 @@
 `node v7.1.0`
 
 注：由于本项目使用了部分es6的语法，因此需要较高版本的node环境，建议升级node版本运行。
+
+## 目录说明
+- `pages/`: 项目前端部分代码;
+- `server/`: 项目服务端代码，目前已部署到我的`测试服务器`(接口为`http://angryzhangzhe.cn:3000`，方法为`POST`，参数为`musicname`)，非商业可自由使用;
+- `test/`: 单元测试;
+
 ## 使用方法
 * 下载微信开发者工具
 [下载 - 小程序](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)
