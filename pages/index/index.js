@@ -76,6 +76,7 @@ Page({
         musicname: musicname,
       },
       success: (res) => {
+        // 把返回的歌曲列表设定为list中的数据
         this.setData({
           list: res.data,
           showContainer: false,
@@ -88,6 +89,7 @@ Page({
   },
   // 列表音乐函数
   changeMusic: function (e) {
+    // 获取歌曲列表详细内容
     var infos = this.data.list[e.target.dataset.musicindex];
     this.setData(infos);
     this.setData({
