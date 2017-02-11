@@ -1,6 +1,6 @@
 {
   "name": "wx-audio",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "a demo of wx smart program.",
   "main": "app.js",
   "scripts": {
