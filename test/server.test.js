@@ -28,9 +28,9 @@ describe('test server/server.js', () => {
       musicname: '告白气球'
     }).expect(200).end((err, res) => {
       expect(res.body).to.be.a('array');
-      expect(res.body).to.have.lengthOf(9);
+      expect(res.body).to.have.lengthOf(8);
       expect(res.body[0]).to.be.a('object');
-      expect(res.body[1].singer).to.equal('王进');
+      expect(res.body[1].singer).to.equal('方小宇');
       done();
     });
   });

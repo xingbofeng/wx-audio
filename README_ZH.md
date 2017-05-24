@@ -2,82 +2,75 @@
 
 [![Build Status](https://travis-ci.org/xingbofeng/wx-audio.svg?branch=master)](https://travis-ci.org/xingbofeng/wx-audio)
 
-It‘s a Music-Player built with weixin-app.
+微信小程序音乐播放器应用。
 
-[中文文档](./README_ZH.md)
-
-## Screenshots
-
+## 运行效果
 ![picture](picture.gif)
 
-## Environment
-`Node.js` 6.0+
+## 运行环境
+`Node.js` 6.0以上
 
-Warning: Because I use some grammar of es6, you should update the version of your `Node.js`, this project is only supported `Node.js 6.0+`.
+注：由于本项目使用了部分es6的语法，因此需要较高版本的node环境，建议升级Node.js版本运行。
 
-## Directory
-- `pages/`: Pages of this application.
-- `server/`: The Back-End of this application，I had deployed it to my own Cloud Server(`https://encounter.studio:3000`, http method is `POST`，param is `musicname`), you can use it freely.
-- `test/`: Unit test code.
+## 目录说明
+- `pages/`: 项目前端部分代码;
+- `server/`: 项目服务端代码，目前已部署到我的`测试服务器`(接口为`http://angryzhangzhe.cn:3000`，方法为`POST`，参数为`musicname`)，非商业可自由使用;
+- `test/`: 单元测试;
 
-## Quickly Start
-* Download The tool of Weixin development.
-[Click here to download](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)
-* Clone this project
+## 使用方法
+* 下载微信开发者工具
+[下载 - 小程序](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)
+* 下载本项目
 ```
 git clone https://github.com/xingbofeng/wx-audio.git
 ```
-* Start the server on your local environment
-
-Warning: I had deployed it to my own Cloud Server(`https://encounter.studio:3000`, http method is `POST`，param is `musicname`).If you want to run the server in your local environment, please modify `wx.request` of `pages/index/index.js` to `http://localhost:3000`, then `yarn start`.
-
-
+* 启动服务端
+注：本项目服务端代码我已部署到我自己的`测试服务器`(接口为`http://angryzhangzhe.cn:3000`)上，若想本地调试接口，请修改`pages/index/index.js`中的`wx.request函数`的接口为`http://127.0.0.1:3000`，在启动本地服务端。
+本地服务端代码入口文件为：`server/server.js`，您可以通过以下命令启动本地服务端：
 ```
 yarn install
 yarn start
 ```
-* Unit test
-The code of test at `test/`, under the environment of `mocha`:
-
+* 运行单元测试
+目前已写三个测试用例，测试用例代码在`test/`目录下，测试框架为`mocha`：
 ```
 yarn install -g mocha
 yarn test
 ```
+* 微信开发者工具加载项目
+* 运行小程序
 
-* Open The tool of Weixin development.
-* Run it in your tool.
+## 待做事件清单
+- [x] node端转发请求
+- [x] 添加server端测试用例
+- [x] 歌曲列表
+- [ ] 添加搜索用户/歌手/歌单功能
+- [ ] 控制歌曲播放速度
 
-## To Do List
-- [x] Add `Node.js`
-- [x] Add Unit Test
-- [x] The List of music
-- [ ] Search User / Singer / Playlist
-- [ ] Control the speed of music playing
-
-## API documents
+## 网易云音乐API介绍
 
 ### URL
 **GET http://music.163.com/api/search/get/**
 
-### params
+### 参数
 ```
-s: The keyword of Searching.
-limit: The mounts of you want to get.
-sub: Please set it `false`.
-type: Types, see the list as follows.
+s: 搜索词
+limit: 返回数量
+sub: 意义不明(非必须参数)；取值：false
+type: 搜索类型；取值意义
 
-1 Music
-10 Album
-100 Singer
-1000 Playlist
-1002 User
+1 单曲
+10 专辑
+100 歌手
+1000 歌单
+1002 用户
 ```
-### Example
-
+### 返回结果
+如对下列url发起get请求：
 ```
 http://s.music.163.com/search/get/?type=1&limit=5&s=%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83
 ```
-The result is as follows:
+返回结果如图所示：
 ```json
 {
   "result": {
@@ -189,13 +182,12 @@ The result is as follows:
   "code": 200
 }
 ```
-
 ![image](http://oczira72b.bkt.clouddn.com/APIhahaha.png)
-## Change Log
-* 0.0.1 :tada:Deploy;
-* 0.0.2 Add Unit test;
-* 0.1.0 Finish the List of music;
-* 0.1.1 Add English documents, And use `yarn` to build this application;
+## 更新日志
+* 0.0.1 :tada:完成基本功能界面;发起请求返回特定的一首歌曲;
+* 0.0.2 更改服务端，现在返回最多十首歌曲，但前端还未优化;添加服务端测试代码;
+* 0.1.0 完成搜索列表功能;发起请求返回多首歌曲;
+* 0.1.1 加入英文文档，使用`yarn`构建;
 
 ## LICENSE
 [MIT LICENSE](./LICENSE)
